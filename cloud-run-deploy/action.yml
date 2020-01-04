@@ -1,0 +1,17 @@
+name: 'Cloud Run Deploy'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+inputs:
+  serviceName:
+    description: 'Name of image to push'
+    required: true
+  gcloudProjectId:
+    description: 'Google Cloud project ID'
+    required: true
+  gcloudServiceAccount:
+    description: 'Email of service account to use during deploy'
+    required: true
+  gcloudRuntimeServiceAccount:
+    description: 'Email of service account to be assumed by service'
+    required: true
