@@ -6,3 +6,6 @@ inputs:
   command:
     description: 'Yarn command to run after install'
     required: true
+  directory:
+    description: 'Directory in which to perform action'
+    required: false

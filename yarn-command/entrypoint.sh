@@ -12,5 +12,10 @@ sanitize() {
 
 sanitize "${INPUT_COMMAND}" "command"
 
+# Change to dir if provided
+if [ -n "$INPUT_DIRECTORY" ]; then
+  cd ${GITHUB_WORKSPACE}/${INPUT_DIRECTORY}
+fi
+
 yarn
 yarn ${INPUT_COMMAND}
