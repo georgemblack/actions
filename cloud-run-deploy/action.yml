@@ -9,9 +9,6 @@ inputs:
   projectId:
     description: 'Google Cloud project ID'
     required: true
-  serviceAccount:
-    description: 'Email of service account to use during deploy'
-    required: true
   runtimeServiceAccount:
     description: 'Email of service account to be assumed by service'
     required: true
