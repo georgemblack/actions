@@ -1,4 +1,4 @@
-FROM gcr.io/google.com/cloudsdktool/cloud-sdk:275.0.0
+FROM gcr.io/google.com/cloudsdktool/cloud-sdk:276.0.0
 
 RUN apt-get update && apt install zip -y
 
