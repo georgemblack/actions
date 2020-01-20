@@ -6,12 +6,21 @@ inputs:
   serviceName:
     description: 'Name of image to push'
     required: true
-  gcloudProjectId:
+  projectId:
     description: 'Google Cloud project ID'
     required: true
-  gcloudServiceAccount:
+  serviceAccount:
     description: 'Email of service account to use during deploy'
     required: true
-  gcloudRuntimeServiceAccount:
+  runtimeServiceAccount:
     description: 'Email of service account to be assumed by service'
     required: true
+  region:
+    description: 'Google Cloud region to deploy'
+    required: false
+  concurrency:
+    description: 'Max concurrent requests to container'
+    required: false
+  maxInstances:
+    description: 'Max number of containers'
+    required: false
