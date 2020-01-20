@@ -15,6 +15,9 @@ inputs:
   runtimeServiceAccount:
     description: 'Email of service account to be assumed by service'
     required: true
+  cloudBuildBucket:
+    description: 'Bucket name for Cloud Build staging and logs'
+    required: true
   region:
     description: 'Google Cloud region to deploy'
     required: false

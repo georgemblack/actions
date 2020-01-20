@@ -14,6 +14,7 @@ sanitize "${INPUT_SERVICENAME}" "serviceName"
 sanitize "${INPUT_PROJECTID}" "projectId"
 sanitize "${INPUT_SERVICEACCOUNT}" "serviceAccount"
 sanitize "${INPUT_RUNTIMESERVICEACCOUNT}" "runtimeServiceAccount"
+sanitize "${INPUT_CLOUDBUILDBUCKET}" "cloudBuildBucket"
 sanitize "${GCLOUD_AUTH}" "GCLOUD_AUTH"
 
 # Set defaults
@@ -21,6 +22,7 @@ SERVICE_NAME=${INPUT_SERVICENAME}
 PROJECT_ID=${INPUT_PROJECTID}
 SERVICE_ACCOUNT=${INPUT_SERVICEACCOUNT}
 RUNTIME_SERVICE_ACCOUNT=${INPUT_RUNTIMESERVICEACCOUNT}
+CLOUD_BUILD_BUCKET=${INPUT_CLOUDBUILDBUCKET}
 REGION=${INPUT_REGION:='us-central1'}
 CONCURRENCY=${INPUT_CONCURRENCY:='20'}
 MAX_INSTANCES=${INPUT_MAXINSTANCES:='200'}
@@ -39,8 +41,8 @@ rm ./key.json
 
 # Submit build
 gcloud builds submit \
-  --gcs-log-dir gs://georgeblack-meta/cloud-build/logs \
-  --gcs-source-staging-dir gs://georgeblack-meta/cloud-build/source \
+  --gcs-log-dir gs://${CLOUD_BUILD_BUCKET}/logs \
+  --gcs-source-staging-dir gs://${CLOUD_BUILD_BUCKET}/source \
   --tag gcr.io/${PROJECT_ID}/${SERVICE_NAME}:${PACKAGE_VERSION}
 
 # Deploy to Cloud Run
