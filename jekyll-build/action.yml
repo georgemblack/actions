@@ -3,6 +3,6 @@ runs:
   using: 'docker'
   image: 'Dockerfile'
 inputs:
-  sourceDirectory:
+  directory:
     description: 'Directory in your GitHub workspace containing Jekyll site'
     required: true

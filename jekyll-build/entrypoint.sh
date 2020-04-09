@@ -10,8 +10,8 @@ sanitize() {
   fi
 }
 
-sanitize "${INPUT_SOURCEDIRECTORY}" "sourceDirectory"
+sanitize "${INPUT_DIRECTORY}" "directory"
 
-cd ${GITHUB_WORKSPACE}/${INPUT_SOURCEDIRECTORY}
+cd ${GITHUB_WORKSPACE}/${INPUT_DIRECTORY}
 bundle install
 bundle exec jekyll build --config=_config.yml,_config_prod.yml
