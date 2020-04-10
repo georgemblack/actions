@@ -6,3 +6,6 @@ inputs:
   directory:
     description: 'Directory in your GitHub workspace containing Jekyll site'
     required: true
+  outputDirectory:
+    description: 'Directory in which build will output'
+    required: false
