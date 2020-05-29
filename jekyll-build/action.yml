@@ -1,11 +1,11 @@
-name: 'Jekyll Build'
+name: 'Jekyll Custom Build'
 runs:
   using: 'docker'
   image: 'Dockerfile'
 inputs:
   directory:
     description: 'Directory in your GitHub workspace containing Jekyll site'
-    required: true
+    required: false
   outputDirectory:
     description: 'Directory in which build will output'
     required: false
