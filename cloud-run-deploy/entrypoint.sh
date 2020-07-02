@@ -13,12 +13,14 @@ sanitize() {
 sanitize "${INPUT_SERVICENAME}" "serviceName"
 sanitize "${INPUT_PROJECTID}" "projectId"
 sanitize "${INPUT_RUNTIMESERVICEACCOUNT}" "runtimeServiceAccount"
+sanitize "${INPUT_CLOUDBUILDBUCKET}" "cloudBuildBucket"
 sanitize "${GCLOUD_AUTH}" "GCLOUD_AUTH"
 
 # Set defaults
 SERVICE_NAME=${INPUT_SERVICENAME}
 PROJECT_ID=${INPUT_PROJECTID}
 RUNTIME_SERVICE_ACCOUNT=${INPUT_RUNTIMESERVICEACCOUNT}
+CLOUD_BUILD_BUCKET=${INPUT_CLOUDBUILDBUCKET}
 REGION=${INPUT_REGION:='us-central1'}
 CONCURRENCY=${INPUT_CONCURRENCY:='default'}
 MAX_INSTANCES=${INPUT_MAXINSTANCES:='default'}
@@ -38,6 +40,8 @@ rm ./key.json
 # Submit build
 gcloud builds submit \
   --config=cloudbuild.yaml \
+  --gcs-log-dir gs://${CLOUD_BUILD_BUCKET}/logs \
+  --gcs-source-staging-dir gs://${CLOUD_BUILD_BUCKET}/source \
   --substitutions=_IMAGE="${SERVICE_NAME}:${PACKAGE_VERSION}" .
 
 # Deploy to Cloud Run
