@@ -6,6 +6,9 @@ inputs:
   serviceName:
     description: 'Name of image to push'
     required: true
+  projectId:
+    description: 'Google Cloud project ID'
+    required: true
   runtimeServiceAccount:
     description: 'Email of service account to be assumed by service'
     required: true

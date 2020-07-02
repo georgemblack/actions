@@ -11,11 +11,13 @@ sanitize() {
 }
 
 sanitize "${INPUT_SERVICENAME}" "serviceName"
+sanitize "${INPUT_PROJECTID}" "projectId"
 sanitize "${INPUT_RUNTIMESERVICEACCOUNT}" "runtimeServiceAccount"
 sanitize "${GCLOUD_AUTH}" "GCLOUD_AUTH"
 
 # Set defaults
 SERVICE_NAME=${INPUT_SERVICENAME}
+PROJECT_ID=${INPUT_PROJECTID}
 RUNTIME_SERVICE_ACCOUNT=${INPUT_RUNTIMESERVICEACCOUNT}
 REGION=${INPUT_REGION:='us-central1'}
 CONCURRENCY=${INPUT_CONCURRENCY:='default'}
@@ -25,12 +27,13 @@ MAX_INSTANCES=${INPUT_MAXINSTANCES:='default'}
 # Format: YYYYMMDDHHMMSS
 PACKAGE_VERSION=$(date "+%Y%m%d%H%M%S")
 
+# Set project
+gcloud config set project ${PROJECT_ID}
+
 # Auth w/service account
 echo ${GCLOUD_AUTH} | base64 --decode > ./key.json
 gcloud auth activate-service-account --key-file=./key.json
 rm ./key.json
-
-PROJECT_ID=$(gcloud config get-value project)
 
 # Submit build
 gcloud builds submit \
