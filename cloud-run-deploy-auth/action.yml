@@ -1,0 +1,26 @@
+name: 'Cloud Run Deploy Auth'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+inputs:
+  serviceName:
+    description: 'Name of image to push'
+    required: true
+  projectId:
+    description: 'Google Cloud project ID'
+    required: true
+  runtimeServiceAccount:
+    description: 'Email of service account to be assumed by service'
+    required: true
+  cloudBuildBucket:
+    description: 'Bucket name for Cloud Build staging and logs'
+    required: true
+  region:
+    description: 'Google Cloud region to deploy'
+    required: false
+  concurrency:
+    description: 'Max concurrent requests to container'
+    required: false
+  maxInstances:
+    description: 'Max number of containers'
+    required: false
