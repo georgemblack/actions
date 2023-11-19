@@ -1,0 +1,8 @@
+name: "Golang NilAway"
+runs:
+  using: "docker"
+  image: "Dockerfile"
+inputs:
+  package:
+    description: "Golang package directory to validate"
+    required: true
